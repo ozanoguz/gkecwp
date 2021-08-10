@@ -22,7 +22,7 @@ pipeline {
         stage("FortiCWP Image Scan") {
             steps {
                 script {
-                    fortiCWPScanner block: true, imageName: "ozanoguz/hello:16" 
+                    fortiCWPScanner block: true, imageName: "ozanoguz/hello:${env.BUILD_ID}" 
                 }
             }
         }
