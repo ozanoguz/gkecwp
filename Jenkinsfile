@@ -20,7 +20,11 @@ pipeline {
             }
         }
         stage("FortiCWP Image Scan") {
-            fortiCWPScanner block: true, imageName: "hello:latest" 
+            steps {
+                script {
+                    fortiCWPScanner block: true, imageName: "hello:latest" 
+                }
+            }
         }
         stage("Push image") {
             steps {
