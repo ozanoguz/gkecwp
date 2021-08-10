@@ -4,7 +4,7 @@ pipeline {
         PROJECT_ID = 'ozanoguzgkeproject'
         CLUSTER_NAME = 'mycluster'
         LOCATION = 'europe-west3-a'
-        CREDENTIALS_ID = 'gke'
+        CREDENTIALS_ID = 'ozanoguzgkeproject'
     }
     stages {
         stage("Checkout code") {
