@@ -7,9 +7,16 @@ pipeline {
         CREDENTIALS_ID = 'ozanoguzgkeproject'
     }
     stages {
-        stage("Checkout code") {
+        stage('Checkout SCM') {
             steps {
-                checkout scm
+                checkout([
+                 $class: 'GitSCM',
+                 branches: [[name: 'master']],
+                 userRemoteConfigs: [[
+                    url: 'git@github.com:ozanoguz/gkecwp.git',
+                    credentialsId: '',
+                 ]]
+                ])
             }
         }
         stage("Build image") {
