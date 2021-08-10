@@ -1,21 +1,13 @@
-FROM bitnami/node:9 as builder
-ENV NODE_ENV="production"
-
-# Copy app's source code to the /app directory
-COPY . /app
-
-# The application's directory will be the working directory
-WORKDIR /app
-
-# Install Node.js dependencies defined in '/app/packages.json'
-RUN npm install
-
-FROM bitnami/node:9-prod
-ENV NODE_ENV="production"
-COPY --from=builder /app /app
-WORKDIR /app
-ENV PORT 5000
-EXPOSE 5000
-
-# Start the application
-CMD ["npm", "start"]
+FROM ubuntu:18.04                                                                                                                             
+# Install dependencies                                                                                                                        
+RUN apt-get -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false update && \                                                      
+ apt-get -y install apache2                                                                                                                   
+# Install apache and write hello world message                                                                                                
+RUN echo 'Hello World!' > /var/www/html/index.html                                                                                            
+# Configure apache                                                                                                                            
+RUN echo '. /etc/apache2/envvars' > /root/run_apache.sh && \                                                                                  
+ echo 'mkdir -p /var/run/apache2' >> /root/run_apache.sh && \                                                                                 
+ echo 'mkdir -p /var/lock/apache2' >> /root/run_apache.sh && \                                                                                
+ echo '/usr/sbin/apache2 -D FOREGROUND' >> /root/run_apache.sh && \                                                                           
+ chmod 755 /root/run_apache.sh                                                                                                                
+EXPOSE 80 
