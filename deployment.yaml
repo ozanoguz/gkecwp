@@ -17,7 +17,12 @@ spec:
         image: ozanoguz/hello:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 5000
+        - containerPort: 5000      
+      - name: hello
+        image: ozanoguz/hello:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
 ---
 apiVersion: v1
 kind: Service
