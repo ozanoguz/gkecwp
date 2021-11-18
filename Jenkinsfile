@@ -1,10 +1,10 @@
 pipeline {
     agent any
     environment {
-        PROJECT_ID = 'ozanoguzgkeproject'
-        CLUSTER_NAME = 'mycluster'
+        PROJECT_ID = 'forti-emea-se'
+        CLUSTER_NAME = 'oogkecluster'
         LOCATION = 'europe-west3-a'
-        CREDENTIALS_ID = 'ozanoguzgkeproject'
+        CREDENTIALS_ID = 'forti-emea-se'
     }
     stages {
         stage("Checkout code") {
