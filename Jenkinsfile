@@ -13,13 +13,10 @@ pipeline {
                 
             }
         }
-                stage("FortiDevSec in action") {
+        stage("Checkout code") {
             steps {
-                    script {
-                        docker pull registry.fortidevsec.forticloud.com/fdevsec_sast:latest
-                        docker run –rm –mount type=bind,source=$PWD,target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
-}
-            
+                checkout scm
+                
             }
         }
         stage("Build image") {
