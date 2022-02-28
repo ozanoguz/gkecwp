@@ -13,7 +13,7 @@ pipeline {
                 
             }
         }
-        stage("Checkout code") {
+        stage("FortiDevSec in action") {
             steps {
                 checkout scm
                 
