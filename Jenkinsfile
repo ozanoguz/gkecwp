@@ -7,13 +7,13 @@ pipeline {
         CREDENTIALS_ID = 'forti-emea-se'
     }
     stages {
-        stage("Checkout code") {
+        stage("Checkout sourcecode") {
             steps {
                 checkout scm
                 
             }
         }
-        stage("FortiDevSec SAST") {
+        stage("FortiDevSec SAST Scanner") {
             steps {
 sh 'docker pull registry.fortidevsec.forticloud.com/fdevsec_sast:latest'
    sh 'docker run --rm --mount type=bind,source=/var/lib/jenkins/workspace/FortiCWP_FortiDevSec_Demo,target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest'
@@ -26,7 +26,7 @@ sh 'docker pull registry.fortidevsec.forticloud.com/fdevsec_sast:latest'
                 }
             }
         }
-        stage("FortiCWP Image Scan") {
+        stage("FortiCWP Image Scanner") {
             steps {
                 script {
                      try {
@@ -46,7 +46,7 @@ sh 'docker pull registry.fortidevsec.forticloud.com/fdevsec_sast:latest'
               }
             }
           }
-        stage("Push image") {
+        stage("Push image to DockerHub") {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
