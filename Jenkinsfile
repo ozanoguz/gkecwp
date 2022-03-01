@@ -13,7 +13,7 @@ pipeline {
                 
             }
         }
-        stage("FortiDevSec in action") {
+        stage("FortiDevSec SAST") {
             steps {
 sh 'docker pull registry.fortidevsec.forticloud.com/fdevsec_sast:latest'
    sh 'docker run –rm –mount type=bind,source=$PWD,target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest'
