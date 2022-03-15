@@ -19,7 +19,7 @@ pipeline {
                 sh 'docker run --rm --mount type=bind,source=/var/lib/jenkins/workspace/FortiCWP_FortiDevSec_Demo,target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest'
               }
         }
-        stage("Build Docker image") {
+        stage("Build Image") {
             steps {
                 script {
                     myapp = docker.build("ozanoguz/hello:${env.BUILD_ID}")
