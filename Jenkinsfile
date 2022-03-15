@@ -38,7 +38,7 @@ pipeline {
                 }
             }
         }
-             stage('Code approval request') {
+             stage('Pipeline Approval') {
      
            steps {
              script {
