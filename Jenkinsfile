@@ -62,5 +62,11 @@ pipeline {
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
         }
+                stage("FortiDevSec DAST Scanner") {
+            steps {
+                sh 'docker pull registry.fortidevsec.forticloud.com/fdevsec_dast:latest'
+                sh 'docker run --rm --mount type=bind,source=/var/lib/jenkins/workspace/FortiCWP_FortiDevSec_Demo,target=/scan registry.fortidevsec.forticloud.com/fdevsec_dast:latest'
+              }
+        }
     }    
 }
