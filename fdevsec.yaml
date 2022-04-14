@@ -5,5 +5,5 @@ id:
   app: 5ffbed56-7fa0-4d16-8c9e-d2544ac385d8
 dast:
   url: https://your.url.com
-  fortipentest_scanner: true #true|false
+  fortipentest_scanner: false #true|false
   full_scan: true #true|false
