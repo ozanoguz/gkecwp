@@ -2,8 +2,4 @@ version: v1
 
 id:
   org: 326015d5-1317-4ed7-bb9e-ba28867d54c0
-  app: 5ffbed56-7fa0-4d16-8c9e-d2544ac385d8
-dast:
-  url: http://34.159.159.177:8080
-  fortipentest_scanner: false #true|false
-  full_scan: true #true|false
+  app: 19b28685-e050-4024-895f-33b49d2ac260
