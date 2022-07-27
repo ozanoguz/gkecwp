@@ -26,7 +26,7 @@ pipeline {
                 }
             }
         }
-        stage("FortiCNP Image Scanner") {
+        stage("FortiCWP Image Scanner") {
             steps {
                 script {
                      try {
